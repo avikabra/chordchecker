@@ -1053,6 +1053,19 @@ var stp_timeout;
 $(".close-audio-lay").hide();
 var upload = $('#upload');
 upload.hide();
+
+$(function() {      
+    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        console.log("mobile");
+        var chord_diagrams = document.getElementsByClassName("col-lg-8");
+        chord_diagrams[0].style.display = "none";
+    } else {
+        console.log("computer");
+    }
+ });
+
 function startRec(){
   isRec=true;
   navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {

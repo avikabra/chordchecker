@@ -108,7 +108,7 @@
       </div>
       </div>
 
-        <div class="row col-12 ">
+        <div class="row col-12" id="tab_holder">
         
           <!-- <div class="col-6 my-4"></div>
           <div class="col-6 my-4">
@@ -220,7 +220,33 @@
 //Dropzone.autoDiscover = false;
 
 //var myDropzone = new Dropzone("div#dropzone", { url: "/api/file-upload"});
-//Hide other tables
+
+// Mobile specification
+
+$(function() {      
+    let isMobile = window.matchMedia("only screen and (max-width: 760px)").matches;
+
+    if (isMobile) {
+        var lead = document.getElementsByClassName("lead");
+        lead[0].style.display = "none";
+
+        var vid_holder = document.getElementById("tab_holder");
+        vid_holder.style.width = "100%";
+
+        var ytvid1=document.getElementsByClassName("ytVid1");
+        for (let syt of ytvid1) {
+          syt.querySelectorAll("iframe")[0].style.align = "center";
+          syt.querySelectorAll("iframe")[0].style.width = "auto";
+        }
+
+        var ytvid2= document.getElementsByClassName("ytVid2");
+        for (let i = 0; i < ytvid2.length; i++) {
+          ytvid2[i].style.display = "none";
+        }
+    }
+ });
+
+// Hide other tables
 $("#g-tab").hide();
 $("#d-tab").hide();
 $("#f-tab").hide();
